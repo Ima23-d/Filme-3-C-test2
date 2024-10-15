@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filme: Vidas Secas</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Estilos globais */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5; /* Fundo da página */
+            margin: 0;
+            padding: 0;
+            text-align: center; /* Centraliza o conteúdo */
+            overflow-x: hidden;
+        }
+
+        .titulo {
+            width: 100%;
+            height: 60px;
+            background-color: black;
+            text-align: center;
+            position: fixed; /* Mantém o título fixo no topo da página */
+            top: 0; /* Posiciona no topo */
+            left: 0;
+            /* color: red; Cor do texto do título */
+            color: rgb(255, 17, 17);
+            line-height: 60px; /* Alinha o texto verticalmente ao centro */
+            font-size: 40px;
+            font-weight: bold;
+            z-index: 1000; /* Garante que o título fique acima de outros elementos */
+        }
+
+        .container {
+            margin-top: 80px; /* Compensar a altura do título fixo */
+        }
+
+        .movie-section {
+            padding: 10px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .movie-poster {
+    width: 200px;
+    height: auto;
+    margin: 0 auto; /* Centraliza a imagem */
+    border: 0.5px solid black; /* Aumenta a espessura da borda */
+    border-radius: 15px; /* Deixa os cantos levemente arredondados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5), 0 6px 20px rgba(0, 0, 0, 0.19); /* Adiciona sombra para dar um efeito tridimensional */
+    background-color: black; /* Fundo branco interno para efeito de borda dupla */
+    padding: 4px; /* Espaçamento interno para simular a moldura do cartaz */
+}
+
+.abrir-livro {
+            transform: perspective(1000px) rotateY(-180deg); /* Gira como se fosse abrir */
+        }
+
+
+        .movie-info {
+            margin-top: 10px;
+        }
+
+        .movie-title {
+            font-size: 24px;
+            color: black;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .movie-details {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .rating {
+            background-color: #4CAF50;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .btn-ingresso {
+            background-color: black;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .btn-ingresso:hover {
+            background-color: #333;
+        }
+
+        .sinopse-section {
+            background-color: red;
+            color: white;
+            padding: 20px;
+            text-align: left;
+            margin-top: 20px;
+            border-radius: 10px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .sinopse-section h3 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .sinopse-section p {
+            margin-top: 10px;
+            font-size: 16px;
+            text-align: justify;
+        }
+
+        .trailer-section {
+            margin-top: 20px;
+            text-align: center; /* Garante que o conteúdo da seção fique centralizado */
+        }
+
+        .trailer-section h3 {
+            margin-bottom: 10px;
+            font-size: 24px;
+            color: black;
+            font-weight: bold;
+        }
+
+        .trailer-container {
+            display: flex;
+            justify-content: center; /* Centraliza o iframe */
+            align-items: center;
+        }
+
+        /* Estilos do carrossel */
+        .carousel {
+            position: relative;
+            max-width: 600px;
+            margin: 20px auto;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .carousel-images {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-image {
+            min-width: 100%;
+            box-sizing: border-box;
+        }
+
+        .carousel-buttons {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+
+        .carousel-button {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        #prevBtn{
+          background-color: transparent;
+         
+        }
+
+        #nextBtn{
+          background-color: transparent;
+        }
+
+        .ava{
+            width: 150px;
+            height: 100px;
+        }
+
+        .cine{
+            width: 50px;
+            height: 50px;
+        }
+        h1{
+            text-align: center;
+            
+        }
+
+        /* Estilos do rodapé */
+.footer {
+  background-color: black; /* Cor de fundo do rodapé */
+  color: #fff; /* Cor do texto no rodapé */
+  padding: 20px;
+  text-align: center;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.footer-content p {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+
+   
+
+    </style>
+</head>
+<body>
+
+    <!-- Título principal do filme -->
+    <div class="titulo">
+        Filme do 3°C
+    </div>
+    
+    <!-- Container para centralizar tudo -->
+    <div class="container">
+
+        <!-- Seção do filme com imagem, título, classificação e duração -->
+        <div class="movie-section">
+            <img src="vidas secas.jpg" alt="Vidas Secas Capa" class="movie-poster" id="moviePoster">
+            <div class="movie-info">
+                <h2 class="movie-title">Vidas Secas</h2>
+                <div class="movie-details">
+                    <span class="rating">L</span>
+                    <span>15min | Drama</span>
+                </div>
+                <a href="page.html">
+                    <button class="btn-ingresso">Ingresso</button>
+                </a>
+                <h1>Avaliações</h1>
+                <img src="avaliar-removebg-preview.png" alt="avaliar" class="ava">
+            </div>
+        </div>
+
+        <!-- Sinopse do filme -->
+        <div class="sinopse-section">
+            <h3>Sinopse</h3>
+            <hr>
+            <p>Vidas Secas é um influente e importante romance do escritor brasileiro Graciliano Ramos, escrito entre 1937 e 1938, publicado originalmente em '38 pela antológica Livraria José Olympio Editora, hoje editado pela Editora Record, e considerado por muitos como a maior obra do autor.</p>
+        </div>
+
+        <!-- Trailer do filme -->
+        <div class="trailer-section">
+            <!-- <from>
+                <span><h1>Trailer</h1> <img src="cinema.png" alt="cinema" class="cine"></span>
+            </from>
+             -->
+            <h1>Trailer</h1>
+            <div class="trailer-container">
+                <iframe width="560" height="315" src="A GRANDE SECA do BRASIL - A Maior Tragédia do Nordeste.mp4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+
+
+        <div class="sinopse-section">
+            <h3>Elenco</h3>
+            <hr>
+            <!-- <p>Direção:</p>
+            <p>Produção:</p> -->
+         <p><strong>Edição:</strong> Arthur Franco, Uriel, Gustavo, Leticia, Mayane, Albérico, Priscilla, Joecilia, Edmilson.</p>
+            <p><strong>Roteiro:</strong> Anna Joecilia, Maria Tereza, Leticia, Ana Beatriz, Anazelia, Mayara, Maria Flor, Christian, 
+                Uriel, Fernando, Derick, Leonardo, Mayane, Julia Letícia.</p>
+            <p><strong>Figurino e Maquiagem:</strong> Uriel, Mayane, Lizzy, Yuri, Kissia, Vitória, Joecilia, Isadora, Tially, Anna Beatriz. </p>
+            <p><strong>Animação:</strong> Ana Beatriz, Uriel, Mayane, João Eugênio.</p>
+            <p><strong>Divulgação:</strong> Kissia, Gustavo, Joecilia, Mayane, Mayara, Yuqui, Guilherme, Tially, Luiz Arthur, Julia Letícia.</p>
+            <p><strong>Atuação:</strong> Mayara, João Eugênio, Christian, Priscilla, Mycael, Lizzy, Yuri, Mayane, Rodrigo, Joseph, Maria Tereza, Gabriel, Maria Rita, Julia Letícia.</p>
+            <p><strong>Fotografia:</strong> Mayane, Uriel, Mycael, Lizzy, Maria Flor, Vitória, Mayara, Maria Rita, Isadora, Cawan Lopes, Albérico, Anna Beatriz, Carla.</p>
+        </div>
+        
+
+        <h1>Fotos</h1>
+
+        <!-- Carrossel de Fotos -->
+        <div class="carousel">
+            <div class="carousel-images">
+                <img src="sertão.jpg" alt="Foto 1" class="carousel-image">
+                <img src="sertao2.jpg" alt="Foto 2" class="carousel-image">
+                <img src="sertão2.jpg" alt="Foto 3" class="carousel-image">
+            </div>
+            <div class="carousel-buttons">
+                <button class="carousel-button" id="prevBtn">&#10094;</button>
+                <button class="carousel-button" id="nextBtn">&#10095;</button>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="footer-content">
+              <p>&copy; 2024 Filme do 3°C - Todos os direitos reservados.</p>
+              <p>Site desenvolvido por: Arthur Franco</p>
+            </div>
+          </footer>
+
+    </div>
+
+    <script>
+        const carouselImages = document.querySelector('.carousel-images');
+        const images = document.querySelectorAll('.carousel-image');
+        let currentIndex = 0;
+
+        function showImage(index) {
+            const totalImages = images.length;
+            // Restringe o índice às imagens disponíveis
+            currentIndex = (index + totalImages) % totalImages;
+            const offset = -currentIndex * 100;
+            carouselImages.style.transform = `translateX(${offset}%)`;
+        }
+
+        document.getElementById('nextBtn').addEventListener('click', () => {
+            showImage(currentIndex + 1);
+        });
+
+        document.getElementById('prevBtn').addEventListener('click', () => {
+            showImage(currentIndex - 1);
+        });
+
+        // Permitir deslizar no celular
+        let startX = 0;
+        let endX = 0;
+
+        carouselImages.addEventListener('touchstart', (event) => {
+            startX = event.touches[0].clientX;
+        });
+
+        carouselImages.addEventListener('touchmove', (event) => {
+            endX = event.touches[0].clientX;
+        });
+
+        carouselImages.addEventListener('touchend', () => {
+            if (startX > endX + 50) {
+                showImage(currentIndex + 1); // Deslizar para a esquerda
+            } else if (startX + 50 < endX) {
+                showImage(currentIndex - 1); // Deslizar para a direita
+            }
+        });
+
+
+        // const poster = document.getElementById('moviePoster');
+        // poster.addEventListener('click', () => {
+        //     poster.classList.toggle('abrir-livro');
+        // });
+    </script>
+
+</body>
+</html>
